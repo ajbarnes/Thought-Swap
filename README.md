@@ -18,9 +18,9 @@ random thought distribution helps to anonymize them from their peers.
 A glimpse of this can be seen below:
 
 ### Participant View
-![Thought-Swap](client/assets/img/participant-mock.png)
+![Thought-Swap](screenshots/participant-mock.png)
 ### Facilitator View
-![Thought-Swap](client/assets/img/facilitator-mock.png)
+![Thought-Swap](screenshots/facilitator-mock.png)
 
 ## Contributing
 
@@ -30,7 +30,7 @@ get started, it's as easy as 1, 2, 3:
 ### Step 1: Fork
 Fork the [core repository](https://github.com/VT-CHCI/Thought-Swap) and check
 out your copy locally.
-```
+```bash
 $ git clone git@github.com:username/Thought-Swap.git
 $ cd Thought-Swap
 $ git remote add upstream git://github.com/VT-CHCI/Thought-Swap.git
@@ -39,18 +39,26 @@ $ git remote add upstream git://github.com/VT-CHCI/Thought-Swap.git
 ### Step 2: Install Dependencies
 Ensure you have the tools needed to develop. Namely: 
 * [Node](https://nodejs.org/en/)
-* [SQL Server](https://dev.mysql.com/downloads/mysql/) 
+* [SQL Server](https://dev.mysql.com/downloads/mysql/)
+* [Sass](https://github.com/sass/dart-sass/releases)
 
 Setup the application by installing the dependencies and then running the test
 suite to check that everything is in working order as such:
-```
-$ npm install
-$ npm test
+```bash
+$ npm install --prefix client
+$ npm install --prefix server
+$ npm test --prefix client
+$ npm test --prefix server
 ```
 
 ### Step 3: Run
-Start up the app with ```$ npm start``` and navigate to localhost on the given
-port in your browser of choice.
+Start up the app with 
+```bash
+$ npm run dev --prefix server
+```
+A browser tab will open for you at `localhost:3000`. The console you run this
+command from will display output from the client and server apps and hot-reload 
+whenever you make a change to either.
 
 <br>
 
