@@ -1,4 +1,4 @@
-# ![Thought-Swap](client/assets/project-logo.png)
+# ![Thought-Swap](screenshots/project-logo.png)
 
 A web app that aims to widen and deepen the scope of participation in 
 facilitated discussions by minimizing participant self-consciousness,
@@ -25,7 +25,7 @@ A glimpse of this can be seen below:
 ## Contributing
 
 For general contribution guidelines see [CONTRIBUTING](CONTRIBUTING.md). To
-get started, it's as easy as 1, 2, 3:
+get started, it's as easy as following the steps below:
 
 ### Step 1: Fork
 Fork the [core repository](https://github.com/VT-CHCI/Thought-Swap) and check
@@ -37,28 +37,38 @@ $ git remote add upstream git://github.com/VT-CHCI/Thought-Swap.git
 ```
 
 ### Step 2: Install Dependencies
-Ensure you have the tools needed to develop. Namely: 
+Ensure you have the tools needed to develop locally. Namely: 
 * [Node](https://nodejs.org/en/)
 * [SQL Server](https://dev.mysql.com/downloads/mysql/)
 * [Sass](https://github.com/sass/dart-sass/releases)
 
-Setup the application by installing the dependencies and then running the test
-suite to check that everything is in working order as such:
+From the root directory, setup the application by installing their dependencies:
 ```bash
 $ npm install --prefix client
 $ npm install --prefix server
-$ npm test --prefix client
-$ npm test --prefix server
 ```
 
 ### Step 3: Run
-Start up the app with 
+From the root directory, start up the app with 
 ```bash
 $ npm run dev --prefix server
 ```
 A browser tab will open for you at `localhost:3000`. The console you run this
 command from will display output from the client and server apps and hot-reload 
 whenever you make a change to either.
+
+### Step 4: Test
+Initially as a sanity check and during development as you make changes, you'll
+want to run the test suites. From the root directory, the client app can be
+tested via its unit tests and integration/end-to-end tests with
+```bash
+$ npm test --prefix client
+$ npm run e2e --prefix client
+```
+and the server app can be tested via its unit tests with
+```bash
+$ npm test --prefix server
+```
 
 <br>
 

@@ -18,13 +18,16 @@
   },
   "devDependencies": {
     "concurrently": "^3.6.0",
-    "nodemon": "^1.17.5"
+    "jest": "^23.2.0",
+    "nodemon": "^1.17.5",
+    "supertest": "^3.1.0"
   },
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix ../client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "jest --coverage"
   },
   "engines": {
     "node": ">=8.2.1"

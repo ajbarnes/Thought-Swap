@@ -25,11 +25,11 @@ app.use(passport.session())
 // require('./routes/authRoutes')(app) // Routes must be defined after other deps
 
 // Configure express to handle routing correctly in production
-if (process.env.NODE_ENV) {
-  // Point express to react build files like main.js and main.css
-  app.use('client/build')
-  // Point express to react's index.html for routes not handled by express
+if (process.env.NODE_ENV === 'production') {
   const path = require('path')
+  // Point express to react build files like main.js and main.css
+  app.use(express.static(path.join(__dirname, '../client/build')))
+  // Point express to react's index.html for routes not handled by express
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
   })
@@ -37,4 +37,8 @@ if (process.env.NODE_ENV) {
 
 // Configure express to recieve connections on the specified port
 const PORT = process.env.PORT || 5000
-app.listen(PORT, () => console.log('listening on *:', PORT))
+const server = app.listen(PORT, () => console.log('listening on *:', PORT))
+
+
+// Make the open connection available to tests so it can be closed
+module.exports = server

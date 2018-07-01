@@ -19,10 +19,23 @@
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"
   },
+  "devDependencies": {
+    "concurrently": "^3.6.0",
+    "cypress": "^3.0.2"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!/node_modules/",
+      "!src/index.js",
+      "!src/registerServiceWorker.js"
+    ]
+  },
   "scripts": {
     "start": "sass --watch src/styles/scss:src/styles/css | react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --coverage",
+    "e2e": "concurrently \"npm run dev --prefix ../server\" \"cypress open\"",
     "eject": "react-scripts eject"
   }
 }
