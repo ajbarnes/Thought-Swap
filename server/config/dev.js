@@ -1,3 +1,3 @@
 module.exports = {
-  cookieKey: 'jaReBspyRppm9YjqvnFi4CDDtWeKSFSw',
+  cookieKey: 'jaReBspyRppm9YjqvnFi4CDDtWeKSFSw'
 }

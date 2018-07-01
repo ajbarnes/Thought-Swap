@@ -2,7 +2,7 @@ const request = require('supertest')
 
 describe('Basic Server Functionality:', () => {
   const OLD_ENV = process.env
-  
+
   beforeEach(() => {
     jest.resetModules()
     process.env = { ...OLD_ENV }
@@ -33,6 +33,4 @@ describe('Basic Server Functionality:', () => {
         app.close()
       })
   })
-
 })
-

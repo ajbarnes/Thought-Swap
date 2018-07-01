@@ -17,17 +17,24 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.5",
     "concurrently": "^3.6.0",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.1",
+    "eslint-watch": "^4.0.0",
     "jest": "^23.2.0",
     "nodemon": "^1.17.5",
+    "prettier": "1.13.7",
     "supertest": "^3.1.0"
   },
   "scripts": {
     "start": "node index.js",
-    "server": "nodemon index.js",
+    "server": "concurrently \"npm run lint\" \"nodemon index.js\"",
     "client": "npm run start --prefix ../client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "lint": "esw -w ."
   },
   "engines": {
     "node": ">=8.2.1"

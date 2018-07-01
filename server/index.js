@@ -15,10 +15,12 @@ const keys = require('./config/keys')
 
 // Configure all nessessary middleware + routing implementations
 app.use(bodyParser.json())
-app.use(cookieSession({
+app.use(
+  cookieSession({
     maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day(s)
     keys: [keys.cookieKey]
-  }))
+  })
+)
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -38,7 +40,6 @@ if (process.env.NODE_ENV === 'production') {
 // Configure express to recieve connections on the specified port
 const PORT = process.env.PORT || 5000
 const server = app.listen(PORT, () => console.log('listening on *:', PORT))
-
 
 // Make the open connection available to tests so it can be closed
 module.exports = server

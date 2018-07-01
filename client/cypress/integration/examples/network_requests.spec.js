@@ -10,7 +10,7 @@ context('Network Requests', () => {
   it('cy.server() - control behavior of network requests and responses', () => {
     // https://on.cypress.io/server
 
-    cy.server().should((server) => {
+    cy.server().should(server => {
       // the default options on server
       // you can override any of these options
       expect(server.delay).to.eq(0)
@@ -37,7 +37,7 @@ context('Network Requests', () => {
       method: 'POST',
       delay: 1000,
       status: 422,
-      response: {},
+      response: {}
     })
 
     // any route commands will now inherit the above options
@@ -47,13 +47,14 @@ context('Network Requests', () => {
 
   it('cy.request() - make an XHR request', () => {
     // https://on.cypress.io/request
-    cy.request('https://jsonplaceholder.typicode.com/comments')
-      .should((response) => {
+    cy.request('https://jsonplaceholder.typicode.com/comments').should(
+      response => {
         expect(response.status).to.eq(200)
         expect(response.body).to.have.length(500)
         expect(response).to.have.property('headers')
         expect(response).to.have.property('duration')
-      })
+      }
+    )
   })
 
   it('cy.route() - route responses to matching requests', () => {
@@ -70,7 +71,9 @@ context('Network Requests', () => {
     cy.get('.network-btn').click()
 
     // https://on.cypress.io/wait
-    cy.wait('@getComment').its('status').should('eq', 200)
+    cy.wait('@getComment')
+      .its('status')
+      .should('eq', 200)
 
     // Listen to POST to comments
     cy.route('POST', '/comments').as('postComment')
@@ -81,10 +84,13 @@ context('Network Requests', () => {
     cy.wait('@postComment')
 
     // get the route
-    cy.get('@postComment').should((xhr) => {
+    cy.get('@postComment').should(xhr => {
       expect(xhr.requestBody).to.include('email')
       expect(xhr.requestHeaders).to.have.property('Content-Type')
-      expect(xhr.responseBody).to.have.property('name', 'Using POST in cy.route()')
+      expect(xhr.responseBody).to.have.property(
+        'name',
+        'Using POST in cy.route()'
+      )
     })
 
     // Stub a response to PUT comments/ ****
@@ -93,7 +99,7 @@ context('Network Requests', () => {
       url: 'comments/*',
       status: 404,
       response: { error: message },
-      delay: 500,
+      delay: 500
     }).as('putComment')
 
     // we have code that puts a comment when

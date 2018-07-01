@@ -70,6 +70,13 @@ and the server app can be tested via its unit tests with
 $ npm test --prefix server
 ```
 
+Additionally, JavaScript style linting is automatically provided by eslint and
+dynamically re-evaluated as you make changes. Linting of any sass changes can be
+run from the root directory with
+```bash
+$ npm run stylelint --prefix client
+```
+
 <br>
 
 ## Recognitions

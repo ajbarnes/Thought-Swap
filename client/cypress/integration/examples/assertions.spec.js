@@ -6,11 +6,11 @@ context('Assertions', () => {
   })
 
   describe('Implicit Assertions', () => {
-
     it('.should() - make an assertion about the current subject', () => {
       // https://on.cypress.io/should
       cy.get('.assertion-table')
-        .find('tbody tr:last').should('have.class', 'success')
+        .find('tbody tr:last')
+        .should('have.class', 'success')
     })
 
     it('.and() - chain multiple assertions together', () => {
@@ -30,32 +30,35 @@ context('Assertions', () => {
 
       // Pass a function to should that can have any number
       // of explicit assertions within it.
-      cy.get('.assertions-p').find('p')
-      .should(($p) => {
-        // return an array of texts from all of the p's
-        let texts = $p.map((i, el) => // https://on.cypress.io/$
-          Cypress.$(el).text())
+      cy.get('.assertions-p')
+        .find('p')
+        .should($p => {
+          // return an array of texts from all of the p's
+          let texts = $p.map((
+            i,
+            el // https://on.cypress.io/$
+          ) => Cypress.$(el).text())
 
-        // jquery map returns jquery object
-        // and .get() convert this to simple array
-        texts = texts.get()
+          // jquery map returns jquery object
+          // and .get() convert this to simple array
+          texts = texts.get()
 
-        // array should have length of 3
-        expect(texts).to.have.length(3)
+          // array should have length of 3
+          expect(texts).to.have.length(3)
 
-        // set this specific subject
-        expect(texts).to.deep.eq([
-          'Some text from first p',
-          'More text from second p',
-          'And even more text from third p',
-        ])
-      })
+          // set this specific subject
+          expect(texts).to.deep.eq([
+            'Some text from first p',
+            'More text from second p',
+            'And even more text from third p'
+          ])
+        })
     })
 
     it('assert - assert shape of an object', () => {
       const person = {
         name: 'Joe',
-        age: 20,
+        age: 20
       }
       assert.isObject(person, 'value is object')
     })

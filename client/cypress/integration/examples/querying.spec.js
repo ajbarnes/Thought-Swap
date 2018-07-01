@@ -23,14 +23,17 @@ context('Querying', () => {
   it('cy.contains() - query DOM elements with matching content', () => {
     // https://on.cypress.io/contains
     cy.get('.query-list')
-      .contains('bananas').should('have.class', 'third')
+      .contains('bananas')
+      .should('have.class', 'third')
 
     // we can pass a regexp to `.contains()`
     cy.get('.query-list')
-      .contains(/^b\w+/).should('have.class', 'third')
+      .contains(/^b\w+/)
+      .should('have.class', 'third')
 
     cy.get('.query-list')
-      .contains('apples').should('have.class', 'first')
+      .contains('apples')
+      .should('have.class', 'first')
 
     // passing a selector to contains will
     // yield the selector containing the text

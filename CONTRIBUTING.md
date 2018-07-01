@@ -62,10 +62,17 @@ contribute like a pro by:
 
       closes #XX
       ```
-* <b>Following the [Angular Style Guide](https://angular.io/styleguide)</b>
+* <b>Ensuring your code passes all linting checks.</b>
+    * eslint output should automatically be available to you when running the development environment servers
+    * You can additionally check your sass styling in the client directory with `$ npm run stylelint`
 * <b>Ensuring your contributions are tested</b>
-    * You can write your own tests in ```/test``` or run existing tests with
-      ```npm test```
+    * You can keep code coverage high by writing tests for any new or altered
+      functionality.
+    * Unit tests for both the client and server can be found in their respective
+      `/tests` directories. Integration/ End-to-End tests can be found in 
+      `client/cypress/` 
+    * You can run existing tests by following the instructions outlined in the README
+      
 
 ## <a name="submissions"></a> Contribution Submissions
 
