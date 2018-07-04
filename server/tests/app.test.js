@@ -15,14 +15,14 @@ describe('Basic Server Functionality:', () => {
 
   test('it should start regularly without crashing', () => {
     process.env.NODE_ENV = 'development'
-    const app = require('../index.js')
-    app.close()
+    const express = require('../index.js')
+    express.connection.close()
   })
 
   test('it should serve a react built index.html with code 200', async () => {
     process.env.NODE_ENV = 'production'
-    const app = await require('../index.js')
-    return request(app)
+    const express = await require('../index.js')
+    return request(express.connection)
       .get('/')
       .expect('Content-Type', /html/)
       .expect(200)
@@ -30,7 +30,7 @@ describe('Basic Server Functionality:', () => {
         expect(response.text).toContain('<title>ThoughtSwap</title>')
       })
       .then(() => {
-        app.close()
+        express.connection.close()
       })
   })
 })

@@ -33,7 +33,7 @@
     "server": "concurrently \"npm run lint\" \"nodemon index.js\"",
     "client": "npm run start --prefix ../client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "test": "jest --coverage",
+    "test": "jest --watch --coverage --collectCoverageFrom=./**/*.js --collectCoverageFrom=!./coverage/**",
     "lint": "esw -w ."
   },
   "engines": {
