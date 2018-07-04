@@ -1,7 +1,13 @@
-# ![Thought-Swap](screenshots/project-logo.png)
+<p align="center">
+  <img src="screenshots/project-logo.png">
+</p>
+<p align="center">
+  <a href="https://github.com/prettier/prettier" target="_blank" alt="Code Style: Prettier">
+    <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" /></a>
+</p>
 
-A web app that aims to widen and deepen the scope of participation in 
-facilitated discussions by minimizing participant self-consciousness,
+An open source web app that aims to widen and deepen the scope of participation 
+in  facilitated discussions by minimizing participant self-consciousness,
 social intimidation, and time pressure.
 
 ## Project in Action
@@ -76,6 +82,20 @@ run from the root directory with
 ```bash
 $ npm run stylelint --prefix client
 ```
+
+### Step 5: Development Environment
+In your copy of MySQL Workbench, create a database and a user for ThoughtSwap to use. Create a file called `dev.js` in `server/config/` with the following 
+content:
+```js
+module.exports = {
+  environment: 'development',
+  cookieKey: 'some_arbitrarily_generated_hash',
+  databaseName: 'mysql_database_name',
+  databaseUser: 'mysql_username',
+  databasePassword: 'mysql_user_password'
+}
+```
+Replace the values as needed.
 
 <br>
 

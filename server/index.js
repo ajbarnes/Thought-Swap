@@ -27,7 +27,7 @@ app.use(passport.session())
 // require('./routes/authRoutes')(app) // Routes must be defined after other deps
 
 // Configure express to handle routing correctly in production
-if (process.env.NODE_ENV === 'production') {
+if (keys.environment === 'production') {
   const path = require('path')
   // Point express to react build files like main.js and main.css
   app.use(express.static(path.join(__dirname, '../client/build')))
@@ -42,4 +42,7 @@ const PORT = process.env.PORT || 5000
 const server = app.listen(PORT, () => console.log('listening on *:', PORT))
 
 // Make the open connection available to tests so it can be closed
-module.exports = server
+module.exports = {
+  connection: server,
+  app: app
+}

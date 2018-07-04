@@ -23,6 +23,7 @@ data
 # misc
 .tmp
 .DS_Store
+server/config/dev.js
 client/.env.local
 client/.env.development.local
 client/.env.test.local
