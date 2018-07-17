@@ -68,9 +68,9 @@ contribute like a pro by:
 * <b>Ensuring your contributions are tested</b>
     * You can keep code coverage high by writing tests for any new or altered
       functionality.
-    * Unit tests for both the client and server can be found in their respective
-      `/tests` directories. Integration/ End-to-End tests can be found in 
-      `client/cypress/` 
+    * Unit & Integration tests for both the client and server can be found in their respective
+      `/tests` directories. End-to-End tests can be found in 
+      `client/cypress/`
     * You can run existing tests by following the instructions outlined in the README
       
 

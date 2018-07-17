@@ -1,19 +1,14 @@
 const express = require('express')
+const app = express()
 const bodyParser = require('body-parser')
 const cookieSession = require('cookie-session')
+const flash = require('connect-flash')
 const passport = require('passport')
-const localStrategy = require('passport-local')
-const app = express()
 
-// Internal Dependencies
-// require('./models/User') // Models must be defined first
-// require('./services/passport')
+// Configure App Environment Variables
 const keys = require('./config/keys')
 
-// Configure app to connect to our specified database
-// TODO
-
-// Configure all nessessary middleware + routing implementations
+// Configure all nessessary middleware
 app.use(bodyParser.json())
 app.use(
   cookieSession({
@@ -21,12 +16,18 @@ app.use(
     keys: [keys.cookieKey]
   })
 )
+app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 
-// require('./routes/authRoutes')(app) // Routes must be defined after other deps
+// Internal Dependencies: Database -> Models -> Services -> Routes
+const db = require('./models')
+const orm = require('./services/database.service')(db.sequelize)
+require('./services/authentication.service')(passport, orm)
 
-// Configure express to handle routing correctly in production
+require('./routes/authentication.routes')(app)
+
+// ~ Configure express to handle routing correctly in production
 if (keys.environment === 'production') {
   const path = require('path')
   // Point express to react build files like main.js and main.css
@@ -38,11 +39,17 @@ if (keys.environment === 'production') {
 }
 
 // Configure express to recieve connections on the specified port
-const PORT = process.env.PORT || 5000
-const server = app.listen(PORT, () => console.log('listening on *:', PORT))
+const connection = app.listen(keys.port, () =>
+  console.info('Server started listening on *:', keys.port)
+)
 
-// Make the open connection available to tests so it can be closed
+// Configure socket.io with all the events we want to listen for
+const server = require('http').createServer(app)
+const io = require('socket.io')(server)
+require('./services/sockets.service')(io)
+
+// Make the open connections available to tests so they can be closed
 module.exports = {
-  connection: server,
-  app: app
+  app: connection,
+  sockets: io
 }

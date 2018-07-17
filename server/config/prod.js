@@ -1,4 +1,5 @@
 module.exports = {
+  port: '80',
   environment: 'production',
   cookieKey: process.env.COOKIE_KEY,
   databaseName: process.env.TS_DB_NAME,

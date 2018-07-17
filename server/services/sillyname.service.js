@@ -19,6 +19,7 @@ const utils = require('./utilities.service')
  * it does work for our purposes, so collisions will have to be mitigated.
  */
 
+// prettier-ignore
 const firstNames = [
   'Almond', 'Orange', 'Apricot', 'Aquamarine', 'Asparagus', 'Bittersweet',
   'Black', 'Blue', 'BlueBell', 'Melon', 'Magenta', 'Tan', 'Blush', 'BrickRed',
@@ -30,6 +31,7 @@ const firstNames = [
   'Plum', 'Pearl', 'Emerald', 'Diamond', 'Garnet', 'Opal', 'Topaz', 'Ruby'
 ]
 
+// prettier-ignore
 const lastNameRoots = [
   'Sepia', 'Inchworm', 'Indigo', 'Cranberry', 'Dandelion', 'Lavender', 'Pepper',
   'Apricot', 'LightBlue', 'Asparagus', 'Madder', 'Magenta', 'Mahogany', 'Maize',
@@ -37,6 +39,7 @@ const lastNameRoots = [
   'Yellow', 'Eggplant', 'Beaver', 'Violet', 'Fern', 'Scarlet', 'Monochrome'
 ]
 
+// prettier-ignore
 const lastNameSuffixes = [
   'Melon', 'Almond', 'Tan', 'Peach', 'Fuchsia', 'Green', 'Brown', 'Chestnut',
   'Thistle', 'Red', 'Blush', 'Denim', 'Mulberry', 'Cerise', 'Wisteria', 'Star',
@@ -47,10 +50,13 @@ const lastNameSuffixes = [
 module.exports = {
   generateSillyname: () => {
     const firstName = firstNames[utils.getRandomInt(0, firstNames.length)]
-    const lastNameRoot = lastNameRoots[utils.getRandomInt(0, lastNameRoots.length)]
-    const lastNameSuffix = lastNameSuffixes[utils.getRandomInt(0, lastNameSuffixes.length)]
+
+    const lastNameRoot =
+      lastNameRoots[utils.getRandomInt(0, lastNameRoots.length)]
+
+    const lastNameSuffix =
+      lastNameSuffixes[utils.getRandomInt(0, lastNameSuffixes.length)]
 
     return `${firstName} ${lastNameRoot + lastNameSuffix}`
   }
 }
-

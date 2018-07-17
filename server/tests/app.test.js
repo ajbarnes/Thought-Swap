@@ -13,16 +13,20 @@ describe('Basic Server Functionality:', () => {
     process.env = OLD_ENV
   })
 
-  test('it should start regularly without crashing', () => {
+  test('it should start regularly without crashing', async () => {
+    // TAG: Integration
     process.env.NODE_ENV = 'development'
-    const express = require('../index.js')
-    express.connection.close()
+    const root = await require('../index.js')
+
+    root.sockets.close()
+    root.app.close()
   })
 
   test('it should serve a react built index.html with code 200', async () => {
+    // TAG: Integration
     process.env.NODE_ENV = 'production'
-    const express = await require('../index.js')
-    return request(express.connection)
+    const root = await require('../index.js')
+    return request(root.app)
       .get('/')
       .expect('Content-Type', /html/)
       .expect(200)
@@ -30,7 +34,8 @@ describe('Basic Server Functionality:', () => {
         expect(response.text).toContain('<title>ThoughtSwap</title>')
       })
       .then(() => {
-        express.connection.close()
+        root.sockets.close()
+        root.app.close()
       })
   })
 })
