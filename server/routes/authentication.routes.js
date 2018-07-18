@@ -1,13 +1,13 @@
 const passport = require('passport')
 
 module.exports = app => {
-  app.get('/api/v1/auth/current_user', (req, res) => {
+  app.get('/api/auth/current_user', (req, res) => {
     res.set('Content-Type', 'application/json')
     res.send(req.user) // Only present if user is authenticated via passport
   })
 
   app.post(
-    '/api/v1/auth/login',
+    '/api/auth/login',
     passport.authenticate('local', {
       failureFlash: `Invalid Username/Password combination. Please try again.`
     }),
@@ -19,12 +19,12 @@ module.exports = app => {
     }
   )
 
-  app.get('/api/v1/auth/logout', (req, res) => {
+  app.get('/api/auth/logout', (req, res) => {
     req.logout()
     res.redirect('/')
   })
 
-  app.post('/api/v1/auth/register', (req, res) => {
+  app.post('/api/auth/register', (req, res) => {
     // TODO
   })
 }

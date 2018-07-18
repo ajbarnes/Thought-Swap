@@ -15,10 +15,17 @@
     }
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "query-string": "^6.1.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-form": "^7.4.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "concurrently": "^3.6.0",
@@ -38,10 +45,10 @@
   "jest": {
     "collectCoverageFrom": [
       "**/**/*.js",
-      "!/node_modules/",
-      "!/coverage/",
-      "!/build/",
-      "!/cypress/",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/build/**",
+      "!**/cypress/**",
       "!src/index.js",
       "!src/registerServiceWorker.js"
     ]

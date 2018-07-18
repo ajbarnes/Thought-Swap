@@ -49,11 +49,11 @@ const About = () => {
           <h1>How do I use ThoughtSwap?</h1>
           <p>
             Facilitators can easily get started by &nbsp;
-            <a href="/register">registering for an account</a> &nbsp; and
-            creating a group on the page that follows. After a group has been
-            created, the facilitator can distribute the generated sillynames to
-            their participants in any way they see fit. Clicking the
-            group&apos;s name brings up the dashboard for that group.
+            <a href="/signup">registering for an account</a> &nbsp; and creating
+            a group on the page that follows. After a group has been created,
+            the facilitator can distribute the generated sillynames to their
+            participants in any way they see fit. Clicking the group&apos;s name
+            brings up the dashboard for that group.
             <br />
             <br />
             At this point, participants can log on with their sillynames and the

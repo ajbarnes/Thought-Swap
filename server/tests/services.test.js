@@ -63,7 +63,7 @@ describe('Authentication Service:', () => {
   test('login attempt with with bad data returns Bad Request', () => {
     const serverRoot = require('../index.js')
     request(serverRoot.app)
-      .post('/api/v1/auth/login')
+      .post('/api/auth/login')
       .send('blah')
       .expect(400)
       .then(() => {
@@ -77,7 +77,7 @@ describe('Authentication Service:', () => {
     let cookie = ''
 
     return request(serverRoot.app)
-      .post('/api/v1/auth/login')
+      .post('/api/auth/login')
       .send(goodFacilitatorCreds)
       .expect(200)
       .then(res => {  // facilitator can successfully log in
@@ -90,7 +90,7 @@ describe('Authentication Service:', () => {
       })
       .then(() => { // authenticated request to current_user returns user's data
         return request(serverRoot.app)
-          .get('/api/v1/auth/current_user')
+          .get('/api/auth/current_user')
           .set('cookie', cookie)
           .then(res => {
             expect(res.body.id).toBe(2)
@@ -99,7 +99,7 @@ describe('Authentication Service:', () => {
       })
       .then(() => { // logout redirects
         return request(serverRoot.app)
-          .get('/api/v1/auth/logout')
+          .get('/api/auth/logout')
           .expect(302)
           .then(res => {
             expect(res.header['location']).toBe('/')
@@ -107,7 +107,7 @@ describe('Authentication Service:', () => {
       })
       .then(() => { // subsequent request to current_user is empty
         return request(serverRoot.app)
-          .get('/api/v1/auth/current_user')
+          .get('/api/auth/current_user')
           .then(res => {
             expect(res.body).toBe('')
           })
@@ -121,7 +121,7 @@ describe('Authentication Service:', () => {
   test('login attempt with correct participant credentials succeeds', () => {
     const serverRoot = require('../index.js')
     return request(serverRoot.app)
-      .post('/api/v1/auth/login')
+      .post('/api/auth/login')
       .send(goodParticipantCreds)
       .expect(200)
       .then(() => {
@@ -133,7 +133,7 @@ describe('Authentication Service:', () => {
   test('login attempt with incorrect facilitator credentials fails', () => {
     const serverRoot = require('../index.js')
     return request(serverRoot.app)
-      .post('/api/v1/auth/login')
+      .post('/api/auth/login')
       .send(badFacilitatorCreds)
       .expect(401)
       .then(() => {
@@ -145,7 +145,7 @@ describe('Authentication Service:', () => {
   test('login attempt with incorrect participant credentials fails', () => {
     const serverRoot = require('../index.js')
     return request(serverRoot.app)
-      .post('/api/v1/auth/login')
+      .post('/api/auth/login')
       .send(badParticipantCreds)
       .expect(401)
       .then(() => {

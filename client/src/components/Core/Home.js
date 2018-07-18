@@ -20,7 +20,7 @@ class Home extends Component {
         <div className="container">
           <h1>More meaningful discussion for the modern classroom.</h1>
           <h2>Share and consider thoughts without fear.</h2>
-          <a className="btn lrg hollow" href="/register">
+          <a className="btn lrg hollow" href="/signup">
             Get Started Today!
           </a>
         </div>
@@ -130,7 +130,7 @@ class Home extends Component {
         <div className="container">
           <h1>Convinced?</h1>
           <h2>Become a facilitator in less than 3 minutes, absolutely free.</h2>
-          <a className="btn lrg blue" href="/register">
+          <a className="btn lrg blue" href="/signup">
             Start a discussion today
           </a>
         </div>
