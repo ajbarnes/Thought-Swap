@@ -17,15 +17,18 @@
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4"
   },
   "devDependencies": {
     "concurrently": "^3.6.0",
     "cypress": "^3.0.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.1",
     "eslint-plugin-react": "^7.10.0",
     "eslint-watch": "^4.0.0",
@@ -34,8 +37,11 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
+      "**/**/*.js",
       "!/node_modules/",
+      "!/coverage/",
+      "!/build/",
+      "!/cypress/",
       "!src/index.js",
       "!src/registerServiceWorker.js"
     ]
@@ -44,9 +50,10 @@
     "start": "concurrently \"npm run lint\" \"npm run server\"",
     "server": "sass --watch src/styles/scss:src/styles/css | react-scripts start",
     "build": "react-scripts build",
-    "lint": "esw -w .", 
-    "stylelint": "sass-lint -v", 
+    "lint": "esw -w .",
+    "stylelint": "sass-lint -v",
     "test": "react-scripts test --env=jsdom --coverage",
+    "test:watch": "react-scripts test --env=jsdom --watch",
     "e2e": "concurrently \"npm run dev --prefix ../server\" \"cypress open\"",
     "eject": "react-scripts eject"
   }
